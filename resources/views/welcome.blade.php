@@ -45,7 +45,9 @@
                 height: 20px;
                 border-radius: 50%;
             }
-
+            #dot-0{
+                background-color: white;
+            }
             #dot-1{
                 background-color: red;
             }
@@ -65,6 +67,7 @@
                 <div class="circle-a">
 
                     <div class="circle-b">
+                        <div id="dot-0" class="dot"></div>
                         <div id="dot-1" class="dot"></div>
                         <div id="dot-2" class="dot"></div>
                         <div id="dot-3" class="dot"></div>
@@ -108,21 +111,31 @@
         window.addEventListener('load', function() {
             var circleA = document.querySelector('.circle-a');
             var dot1 = document.getElementById('dot-1');
+            var dot0 = document.getElementById('dot-0');
 
-            var radiusA = 250;
+            var radiusA = 300;
             var angleA = 0;
+            var angleA = 0;
+            var angleAA = 0;
 
             setInterval(function() {
-                var centerX_A = circleA.offsetWidth / 2;
-                var centerY_A = circleA.offsetHeight / 2;
+                var centerX_A = circleA.offsetWidth / 3;
+                var centerY_A = circleA.offsetHeight / 3;
 
                 var x_A = centerX_A + Math.cos(angleA) * radiusA - dot1.offsetWidth / 2;
                 var y_A = centerY_A + Math.sin(angleA) * radiusA - dot1.offsetHeight / 2;
 
+                var x_AA = centerX_A + Math.cos(angleAA) * radiusA - dot0.offsetWidth / 2;
+                var y_AA = centerY_A + Math.sin(angleAA) * radiusA - dot0.offsetHeight / 2;
+
                 dot1.style.left = x_A + 'px';
                 dot1.style.top = y_A + 'px';
 
-                angleA += 0.05;
+                dot0.style.left = x_AA + 'px';
+                dot0.style.top = y_AA + 'px';
+
+                angleA += 0.04;
+                angleAA += 0.035;
             }, 30);
         });
 
